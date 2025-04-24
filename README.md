@@ -163,3 +163,22 @@
   }
 
   function saveCourses() {
+    localStorage.setItem('courses', JSON.stringify(courses));
+    renderCourses();
+  }
+
+  function clearInputs() {
+    document.querySelectorAll('input').forEach(i => i.value = '');
+    document.getElementById('type').value = 'group';
+  }
+
+  document.getElementById('searchInput').addEventListener('input', renderCourses);
+  document.getElementById('themeSelector').addEventListener('change', e => {
+    document.body.className = e.target.value === 'dark' ? 'dark' : '';
+  });
+
+  window.onload = renderCourses;
+</script>
+
+</body>
+</html>
